@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>请求与响应</title>
+</head>
+<body>
+    <h5>您的账户余额是<span id="amount">###amount###</span></h5>
+    <button id="button">支付一块钱</button>
+    <script>
+        window.yyy = function (result) {
+            if(result === 'success'){
+                amount.innerText = amount.innerText - 1
+            }
+        }
+        let script = document.createElement('script')
+        script.src = 'http://jack.com:8002/pay?callback=yyy'
+        document.body.appendChild(script)
+        script.onload = function () {
+            this.currentTarget.remove()
+        }
+        script.onerror = function () {
+            alert('fail')
+            this.currentTarget.remove()
+        }
+        button.addEventListener('click',(e)=>{})
+    </script>
+</body>
+</html>
